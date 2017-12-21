@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hgs.common.db.SystemParamMapper">
+	<resultMap id="systemParam" type="com.hgs.common.db.SystemParam">
+		<result property="enterpriseId" jdbcType="INTEGER" column="k01_enterprise_id"/>
+		<result property="gpsTimeInteval" jdbcType="INTEGER" column="f01_gps_time"/>
+	</resultMap>
+	
+	<select id="selectByEnterpriseId" resultMap="systemParam" parameterType="java.lang.Integer">
+		select k01_enterprise_id,f01_gps_time from mtb06_talkback_parameter 
+		where k01_enterprise_id = #{eId}
+	</select>
+</mapper>

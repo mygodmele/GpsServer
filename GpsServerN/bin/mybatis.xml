@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://192.168.0.5:3306/ssh?useUnicode=true&amp;characterEncoding=UTF-8"/>
+				<property name="username" value="hgs"/>
+				<property name="password" value="hgs"/>
+				<property name="poolMaximumActiveConnections" value="400"/>
+				<property name="poolMaximumIdleConnections" value="400"/>
+				<property name="poolPingEnabled" value="true"/>
+				<property name="poolPingQuery" value="select id from device where 1=2"/>
+				<property name="poolPingConnectionsNotUsedFor" value="3600000"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="com/hgs/common/db/Mtd02GpsInfoMapper.xml"/>
+		<mapper resource="com/hgs/common/db/Mtd03GpsHistoryMapper.xml"/>
+	    <mapper resource="com/hgs/common/db/DeviceMapper.xml"/>
+	</mappers>
+</configuration>

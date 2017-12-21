@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.TaxiInfoMapper">
+	<resultMap id="rm" type="com.hgs.common.db.TaxiInfo">
+		<result property="id" jdbcType="INTEGER" column="k01_user_id"/>
+		<result property="taxiLicense" jdbcType="VARCHAR" column="taxi_license"/>
+		<result property="passengerState" jdbcType="CHAR" column="passenger_state"/>
+		<result property="currentLng" jdbcType="REAL" column="longitude"/>
+		<result property="currentLat" jdbcType="REAL" column="latitude"/>
+		<result property="currentSpeed" jdbcType="REAL" column="speed"/>
+		<result property="currentDirection" jdbcType="SMALLINT" column="direction"/>
+		<result property="gpsReceiveTime" jdbcType="VARCHAR" column="gps_arrive_time"/>
+		<result property="mileage" jdbcType="REAL" column="mileage"/>
+		<result property="isAlert" jdbcType="CHAR" column="is_alert"/>
+		<result property="authCode" jdbcType="VARCHAR" column="auth_code"/>
+		<result property="lastUpdateTime" jdbcType="VARCHAR" column="lastUpdateTime"/>
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		g.k01_user_id,
+		g.taxi_license,
+		g.passenger_state,
+		g.longitude,
+		g.latitude,
+		g.speed,
+		g.direction,
+		g.gps_arrive_time,
+		g.mileage,
+		g.is_alert,
+		g.auth_code,
+		g.lastUpdateTime
+	</sql>
+	<select id="loadByPsn" parameterType="java.lang.String" resultMap="rm">
+		SELECT 
+			<include refid="Base_Column_List" />
+		FROM mtd02_gps_info g, mtb02_talkback_user u
+		WHERE 
+			u.k02_user_account = #{psn} and g.k01_user_id = u.puk_id
+	</select>
+	
+	<!-- 更新 -->
+	<update id="updateSelective" parameterType="com.hgs.common.db.TaxiInfo">
+		UPDATE mtd02_gps_info 
+			<set>
+				<if test="taxiLicense!=null">
+				taxi_license = #{taxiLicense},
+				</if>
+				<if test="passengerState!=null">
+				passenger_state = #{passengerState},
+				</if>
+				<if test="currentLng!=null">
+				longitude = #{currentLng},
+				</if>
+				<if test="currentLat!=null">
+				latitude = #{currentLat},
+				</if>
+				<if test="currentLng!=null">
+				lng = #{lng},
+				</if>
+				<if test="currentLat!=null">
+				lat = #{lat},
+				</if>
+				<if test="currentSpeed!=null">
+				speed = #{currentSpeed},
+				</if>
+				<if test="currentDirection!=null">
+				direction = #{currentDirection},
+				</if>
+				<if test="gpsReceiveTime!=null">
+				gps_arrive_time = #{gpsReceiveTime},
+				</if>
+				<if test="mileage!=null">
+				mileage = #{mileage},
+				</if>
+				<if test="isAlert!=null">
+				is_alert = #{isAlert},
+				</if>
+				<if test="authCode!=null">
+				auth_code = #{authCode},
+				</if>
+				<if test="lastUpdateTime!=null">
+				lastUpdateTime = #{lastUpdateTime}
+				</if>
+			</set>
+		WHERE 
+			k01_user_id = #{id}
+	</update>
+	
+</mapper>
+

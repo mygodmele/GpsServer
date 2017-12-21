@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.Mtd03GpsHistoryMapper">
+	<resultMap id="rm" type="com.hgs.common.db.Mtd03GpsHistory">
+		<result property="pukId" jdbcType="INTEGER" column="puk_id"/>
+		<result property="k01UserId" jdbcType="VARCHAR" column="k01_user_id"/>
+		<result property="latitude" jdbcType="CHAR" column="latitude"/>
+		<result property="longitude" jdbcType="CHAR" column="longitude"/>
+		<result property="gpsArriveTime" jdbcType="VARCHAR" column="gps_arrive_time"/>
+		<result property="speed" jdbcType="VARCHAR" column="speed"/>
+		<result property="direction" jdbcType="VARCHAR" column="direction"/>
+		<result property="postionlogo" jdbcType="VARCHAR" column="postionlogo"/>
+		<result property="mileage" jdbcType="VARCHAR" column="mileage"/>
+	</resultMap>
+	 <!-- 插入 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="pukId" parameterType="com.hgs.common.db.Mtd03GpsHistory">
+		INSERT INTO mtd03_gps_history (
+			puk_id,
+			k01_user_id,
+			latitude,
+			longitude,
+			gps_arrive_time,
+			speed,
+			direction,
+			postionlogo,
+			mileage
+		) VALUES (
+			#{pukId},
+			#{k01UserId},
+			#{latitude},
+			#{longitude},
+			#{gpsArriveTime},
+			#{speed},
+			#{direction},
+			#{postionlogo},
+			#{mileage}
+		)
+	</insert>
+	
+</mapper>
+

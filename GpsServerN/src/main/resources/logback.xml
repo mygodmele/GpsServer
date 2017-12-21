@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 默认配置为PatternLayoutEncoder -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread][%-5level]%logger{36} - %msg%n</pattern>
+            <!-- <pattern>%d{HH:mm:ss.SSS} [%thread][%-5level]%logger{36} - %msg%n%caller{2}</pattern> -->
+            <!-- <pattern>%d{HH:mm:ss.SSS}[%-5level][%thread] - %msg%n</pattern> -->
+        </encoder>
+    </appender>
+    
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">  
+	    <file>./gps_server_n.log</file>
+	    <encoder>
+          <pattern>%d{HH:mm:ss.SSS}[%-5level][%thread] - %msg%n</pattern>
+        </encoder>
+	    <append>true</append>  
+	</appender>
+    
+    <!-- <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+        <file>./gps_server_n.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>./gps_server_n%d{yyyyMMdd}.log.zip</FileNamePattern>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+	   
+		rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>renhai%i.log</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>10</maxIndex>
+        </rollingPolicy>
+		
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>20MB</maxFileSize>
+        </triggeringPolicy
+
+        <encoder>
+          <pattern>%d{HH:mm:ss.SSS}[%-5level][%thread]%logger{36} - %msg%n</pattern>
+          <pattern>%d{HH:mm:ss.SSS}[%-5level][%thread] - %msg%n</pattern>
+        </encoder>
+    </appender> -->
+    
+    <logger name="com.hgs.gpsserver.main" level = "DEBUG" />
+    <logger name="org.apache.ibatis" level = "ERROR" />
+    <logger name="org.apache.mina" level = "ERROR"/>
+    <logger name="CommonLogger" level = "ERROR" />
+    <logger name="com.hgs.common.db" level = "ERROR"/>
+    <logger name="com.hgs.gpsserver.module.DeviceModule" level = "ERROR"/>
+    <logger name="com.hgs.gpsserver.module.DbModule" level = "DEBUG"/>
+    <logger name="com.hgs.gpsserver.module.InputMessageModule" level = "DEBUG"/>
+    <logger name="com.hgs.gpsserver.module.NetModule" level = "DEBUG"/>
+    <logger name="com.hgs.gpsserver.module.OutputMessageModule" level = "ERROR"/>
+    <root level="ERROR">
+        <appender-ref ref="FILE" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="fileAppender" />
+    </root>
+</configuration>

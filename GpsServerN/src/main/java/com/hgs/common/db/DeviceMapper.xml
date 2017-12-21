@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hgs.common.db.DeviceMapper">
+	<resultMap id="device" type="com.hgs.common.db.Device">
+		<result property="id" jdbcType="INTEGER" column="id"/>
+		<result property="psn" jdbcType="VARCHAR" column="interphone_psn"/>
+		<result property="authId" jdbcType="VARCHAR" column="auth_code"/>
+	</resultMap>
+	
+	<select id="selectByAuthId" resultMap="device" parameterType="java.lang.String">
+		select g.k01_user_id as id,u.k02_user_account as interphone_psn,g.auth_code 
+		from mtb02_talkback_user u,mtd02_gps_info g 
+		where g.auth_code = #{authId,jdbcType=VARCHAR} and u.puk_id = g.k01_user_id
+	</select>
+	
+	<select id="selectByPsn" resultMap="device" parameterType="java.lang.String">
+		select g.k01_user_id as id,u.k02_user_account as interphone_psn,g.auth_code 
+		from mtb02_talkback_user u,mtd02_gps_info g 
+		where u.k02_user_account = #{psn,jdbcType=VARCHAR} and u.puk_id = g.k01_user_id
+	</select>
+	
+	<select id="selectByPhone" resultMap="device" parameterType="java.lang.String">
+		select g.k01_user_id as id,u.k02_user_account as interphone_psn,g.auth_code 
+		from mtb02_talkback_user u,mtd02_gps_info g 
+		where u.k02_user_account like #{psn,jdbcType=VARCHAR} and u.puk_id = g.k01_user_id
+	</select>
+	
+	<update id="update" parameterType="com.hgs.common.db.Device">
+		update mtd02_gps_info set auth_code = #{authId,jdbcType=VARCHAR},taxi_license = #{licensePlate,jdbcType=VARCHAR},can_send_text = 1
+		where k01_user_id = (select puk_id from mtb02_talkback_user where k02_user_account = #{psn,jdbcType=VARCHAR})
+	</update>
+	
+	<update id="clearAuthId" parameterType="java.lang.Integer">
+		update mtd02_gps_info set auth_code = '',can_send_text = 0
+		where id = #{id}
+	</update>
+</mapper>

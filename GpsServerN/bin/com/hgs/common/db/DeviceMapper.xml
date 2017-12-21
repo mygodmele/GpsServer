@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hgs.common.db.DeviceMapper">
+	<resultMap id="device" type="com.hgs.common.db.Device">
+		<result property="userId" jdbcType="INTEGER" column="puk_id"/>
+		<result property="gpsImei" jdbcType="VARCHAR" column="k02_user_account"/>
+	</resultMap>
+	
+	<select id="selectByGpsImei" resultMap="device" parameterType="java.lang.String">
+		select puk_id,k02_user_account from mtb02_talkback_user 
+		where k02_user_account = #{gpsImei,jdbcType=VARCHAR}
+	</select>
+</mapper>

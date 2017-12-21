@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.OrderInfoMapper">
+	<resultMap id="rm" type="com.hgs.common.db.OrderInfo">
+		<result property="id" jdbcType="INTEGER" column="id"/>
+		<result property="orderNum" jdbcType="VARCHAR" column="order_num"/>
+		<result property="passengerId" jdbcType="INTEGER" column="passenger_id"/>
+		<result property="taxiId" jdbcType="INTEGER" column="taxi_id"/>
+		<result property="orderCreateTime" jdbcType="VARCHAR" column="order_create_time"/>
+		<result property="orderState" jdbcType="VARCHAR" column="order_state"/>
+		<result property="orderEndTime" jdbcType="VARCHAR" column="order_end_time"/>
+		<result property="drivingMileage" jdbcType="REAL" column="driving_mileage"/>
+		<result property="totalFee" jdbcType="REAL" column="total_fee"/>
+		<result property="startPosition" jdbcType="VARCHAR" column="start_position"/>
+		<result property="destination" jdbcType="VARCHAR" column="destination"/>
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id,
+		order_num,
+		passenger_id,
+		taxi_id,
+		order_create_time,
+		order_state,
+		order_end_time,
+		driving_mileage,
+		total_fee,
+		start_position,
+		destination
+	</sql>
+	
+	<select id="loadByOrderNum" parameterType="java.lang.String" resultMap="rm">
+		SELECT 
+			<include refid="Base_Column_List" />
+		FROM order_info 
+		WHERE 
+			order_num = #{orderNum} 
+	</select>
+	
+	<!-- 更新 -->
+	<update id="updateSelective" parameterType="com.hgs.common.db.OrderInfo">
+		UPDATE order_info 
+			<set>
+				<if test="orderNum!=null">
+				order_num = #{orderNum},
+				</if>
+				<if test="passengerId!=null">
+				passenger_id = #{passengerId},
+				</if>
+				<if test="taxiId!=null">
+				taxi_id = #{taxiId},
+				</if>
+				<if test="orderCreateTime!=null">
+				order_create_time = #{orderCreateTime},
+				</if>
+				<if test="orderState!=null">
+				order_state = #{orderState},
+				</if>
+				<if test="orderEndTime!=null">
+				order_end_time = #{orderEndTime},
+				</if>
+				<if test="drivingMileage!=null">
+				driving_mileage = #{drivingMileage},
+				</if>
+				<if test="totalFee!=null">
+				total_fee = #{totalFee}
+				</if>
+			</set>
+		WHERE 
+			order_num = #{orderNum} and order_state != '5'
+	</update>
+	
+</mapper>
+

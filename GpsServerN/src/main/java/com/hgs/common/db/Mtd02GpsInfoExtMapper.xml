@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.Mtd02GpsInfoExtMapper">
+
+	<resultMap id="rmExt" type="com.hgs.common.db.Mtd02GpsInfoExt">
+		<result property="pukId" jdbcType="INTEGER" column="puk_id"/>
+		<result property="k01UserId" jdbcType="VARCHAR" column="k01_user_id"/>
+		<result property="error" jdbcType="VARCHAR" column="error"/>
+		<result property="powerstate" jdbcType="VARCHAR" column="powerstate"/>
+		<result property="protocollogo" jdbcType="VARCHAR" column="protocollogo"/>
+		<result property="acc" jdbcType="CHAR" column="acc"/>
+		<result property="st1d6" jdbcType="CHAR" column="st1d6"/>
+		<result property="st1d5" jdbcType="CHAR" column="st1d5"/>
+		<result property="st1d4" jdbcType="CHAR" column="st1d4"/>
+		<result property="st1d3" jdbcType="CHAR" column="st1d3"/>
+		<result property="st1d2" jdbcType="CHAR" column="st1d2"/>
+		<result property="st1d1" jdbcType="CHAR" column="st1d1"/>
+		<result property="st1d0" jdbcType="CHAR" column="st1d0"/>
+		<result property="st2d7" jdbcType="CHAR" column="st2d7"/>
+		<result property="st2d6" jdbcType="CHAR" column="st2d6"/>
+		<result property="st2d5" jdbcType="CHAR" column="st2d5"/>
+		<result property="st2d4" jdbcType="CHAR" column="st2d4"/>
+		<result property="st2d3" jdbcType="CHAR" column="st2d3"/>
+		<result property="st2d2" jdbcType="CHAR" column="st2d2"/>
+		<result property="st2d1" jdbcType="CHAR" column="st2d1"/>
+		<result property="st2d0" jdbcType="CHAR" column="st2d0"/>
+		<result property="st3d7" jdbcType="CHAR" column="st3d7"/>
+		<result property="st3d6" jdbcType="CHAR" column="st3d6"/>
+		<result property="st3d5" jdbcType="CHAR" column="st3d5"/>
+		<result property="csq" jdbcType="VARCHAR" column="csq"/>
+		<result property="st4d7" jdbcType="CHAR" column="st4d7"/>
+		<result property="st4d6" jdbcType="CHAR" column="st4d6"/>
+		<result property="st4d5" jdbcType="CHAR" column="st4d5"/>
+		<result property="st4d4" jdbcType="CHAR" column="st4d4"/>
+		<result property="st4d3" jdbcType="CHAR" column="st4d3"/>
+		<result property="st4d2" jdbcType="CHAR" column="st4d2"/>
+		<result property="st4d1" jdbcType="CHAR" column="st4d1"/>
+		<result property="st4d0" jdbcType="CHAR" column="st4d0"/>
+		<result property="sendtime" jdbcType="VARCHAR" column="sendtime"/>
+		<result property="stoptime" jdbcType="VARCHAR" column="stoptime"/>
+		<result property="overspeedtime" jdbcType="DOUBLE" column="overspeedtime"/>
+		<result property="fence" jdbcType="VARCHAR" column="fence"/>
+		<result property="v6" jdbcType="VARCHAR" column="v6"/>
+		<result property="v7" jdbcType="VARCHAR" column="v7"/>
+		<result property="v8" jdbcType="VARCHAR" column="v8"/>
+		<result property="fbBak1" jdbcType="VARCHAR" column="FB_BAK1"/>
+		<result property="fbBak2" jdbcType="VARCHAR" column="FB_BAK2"/>
+		<result property="fbBak3" jdbcType="VARCHAR" column="FB_BAK3"/>
+		<result property="fbBak4" jdbcType="VARCHAR" column="FB_BAK4"/>
+		<result property="fbBak5" jdbcType="VARCHAR" column="FB_BAK5"/>
+		<result property="ebExt1" jdbcType="VARCHAR" column="EB_EXT1"/>
+		<result property="ebExt2" jdbcType="VARCHAR" column="EB_EXT2"/>
+		<result property="ebExt3" jdbcType="VARCHAR" column="EB_EXT3"/>
+		<result property="ebExt4" jdbcType="VARCHAR" column="EB_EXT4"/>
+		<result property="ebExt5" jdbcType="VARCHAR" column="EB_EXT5"/>
+		<result property="dddDelFlag" jdbcType="CHAR" column="DDD_DEL_FLAG"/>
+		<result property="cc1CreatTime" jdbcType="VARCHAR" column="CC1_CREAT_TIME"/>
+		<result property="cc2CreatUser" jdbcType="VARCHAR" column="CC2_CREAT_USER"/>
+		<result property="uu1UpdateTime" jdbcType="VARCHAR" column="UU1_UPDATE_TIME"/>
+		<result property="uu2UpdateUser" jdbcType="VARCHAR" column="UU2_UPDATE_USER"/>
+	</resultMap>
+
+	<!-- 更新 -->
+	<update id="updateSelective" parameterType="com.hgs.common.db.Mtd02GpsInfoExt">
+		UPDATE mtd02_gps_info_ext 
+			<set>
+				<if test="k01UserId!=null">
+				k01_user_id = #{k01UserId},
+				</if>
+				<if test="error!=null">
+				error = #{error},
+				</if>
+				<if test="powerstate!=null">
+				powerstate = #{powerstate},
+				</if>
+				<if test="protocollogo!=null">
+				protocollogo = #{protocollogo},
+				</if>
+				<if test="acc!=null">
+				acc = #{acc},
+				</if>
+				<if test="st1d6!=null">
+				st1d6 = #{st1d6},
+				</if>
+				<if test="st1d5!=null">
+				st1d5 = #{st1d5},
+				</if>
+				<if test="st1d4!=null">
+				st1d4 = #{st1d4},
+				</if>
+				<if test="st1d3!=null">
+				st1d3 = #{st1d3},
+				</if>
+				<if test="st1d2!=null">
+				st1d2 = #{st1d2},
+				</if>
+				<if test="st1d1!=null">
+				st1d1 = #{st1d1},
+				</if>
+				<if test="st1d0!=null">
+				st1d0 = #{st1d0},
+				</if>
+				<if test="st2d7!=null">
+				st2d7 = #{st2d7},
+				</if>
+				<if test="st2d6!=null">
+				st2d6 = #{st2d6},
+				</if>
+				<if test="st2d5!=null">
+				st2d5 = #{st2d5},
+				</if>
+				<if test="st2d4!=null">
+				st2d4 = #{st2d4},
+				</if>
+				<if test="st2d3!=null">
+				st2d3 = #{st2d3},
+				</if>
+				<if test="st2d2!=null">
+				st2d2 = #{st2d2},
+				</if>
+				<if test="st2d1!=null">
+				st2d1 = #{st2d1},
+				</if>
+				<if test="st2d0!=null">
+				st2d0 = #{st2d0},
+				</if>
+				<if test="st3d7!=null">
+				st3d7 = #{st3d7},
+				</if>
+				<if test="st3d6!=null">
+				st3d6 = #{st3d6},
+				</if>
+				<if test="st3d5!=null">
+				st3d5 = #{st3d5},
+				</if>
+				<if test="csq!=null">
+				csq = #{csq},
+				</if>
+				<if test="st4d7!=null">
+				st4d7 = #{st4d7},
+				</if>
+				<if test="st4d6!=null">
+				st4d6 = #{st4d6},
+				</if>
+				<if test="st4d5!=null">
+				st4d5 = #{st4d5},
+				</if>
+				<if test="st4d4!=null">
+				st4d4 = #{st4d4},
+				</if>
+				<if test="st4d3!=null">
+				st4d3 = #{st4d3},
+				</if>
+				<if test="st4d2!=null">
+				st4d2 = #{st4d2},
+				</if>
+				<if test="st4d1!=null">
+				st4d1 = #{st4d1},
+				</if>
+				<if test="st4d0!=null">
+				st4d0 = #{st4d0},
+				</if>
+				<if test="sendtime!=null">
+				sendtime = #{sendtime},
+				</if>
+				<if test="stoptime!=null">
+				stoptime = #{stoptime},
+				</if>
+				<if test="overspeedtime!=null">
+				overspeedtime = #{overspeedtime},
+				</if>
+				<if test="fence!=null">
+				fence = #{fence},
+				</if>
+				<if test="v6!=null">
+				v6 = #{v6},
+				</if>
+				<if test="v7!=null">
+				v7 = #{v7},
+				</if>
+				<if test="v8!=null">
+				v8 = #{v8},
+				</if>
+				<if test="fbBak1!=null">
+				FB_BAK1 = #{fbBak1},
+				</if>
+				<if test="fbBak2!=null">
+				FB_BAK2 = #{fbBak2},
+				</if>
+				<if test="fbBak3!=null">
+				FB_BAK3 = #{fbBak3},
+				</if>
+				<if test="fbBak4!=null">
+				FB_BAK4 = #{fbBak4},
+				</if>
+				<if test="fbBak5!=null">
+				FB_BAK5 = #{fbBak5},
+				</if>
+				<if test="ebExt1!=null">
+				EB_EXT1 = #{ebExt1},
+				</if>
+				<if test="ebExt2!=null">
+				EB_EXT2 = #{ebExt2},
+				</if>
+				<if test="ebExt3!=null">
+				EB_EXT3 = #{ebExt3},
+				</if>
+				<if test="ebExt4!=null">
+				EB_EXT4 = #{ebExt4},
+				</if>
+				<if test="ebExt5!=null">
+				EB_EXT5 = #{ebExt5},
+				</if>
+				<if test="dddDelFlag!=null">
+				DDD_DEL_FLAG = #{dddDelFlag},
+				</if>
+				<if test="cc1CreatTime!=null">
+				CC1_CREAT_TIME = #{cc1CreatTime},
+				</if>
+				<if test="cc2CreatUser!=null">
+				CC2_CREAT_USER = #{cc2CreatUser},
+				</if>
+				<if test="uu1UpdateTime!=null">
+				UU1_UPDATE_TIME = #{uu1UpdateTime},
+				</if>
+				<if test="uu2UpdateUser!=null">
+				UU2_UPDATE_USER = #{uu2UpdateUser}
+				</if>
+			</set>
+		WHERE 
+			k01_user_id = #{k01UserId}
+	</update>
+	
+</mapper>

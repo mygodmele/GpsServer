@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.TaxiHistoryInfoMapper">
+	<resultMap id="rm" type="com.hgs.common.db.TaxiHistoryInfo">
+		<result property="id" jdbcType="INTEGER" column="id"/>
+		<result property="taxiId" jdbcType="INTEGER" column="taxi_id"/>
+		<result property="interphonePsn" jdbcType="VARCHAR" column="interphone_psn"/>
+		<result property="historicalLng" jdbcType="REAL" column="historical_lng"/>
+		<result property="historicalLat" jdbcType="REAL" column="historical_lat"/>
+		<result property="historicalSpeed" jdbcType="REAL" column="historical_speed"/>
+		<result property="historicalDir" jdbcType="SMALLINT" column="historical_dir"/>
+		<result property="gpsReceiveTime" jdbcType="VARCHAR" column="gps_receive_time"/>
+	</resultMap>
+	
+	 <!-- 插入 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.hgs.common.db.TaxiHistoryInfo">
+		INSERT INTO mtd03_gps_history (
+			k01_user_id,
+			longitude,
+			latitude,
+			lng,
+			lat,
+			speed,
+			direction,
+			gps_arrive_time
+		) VALUES (
+			#{taxiId},
+			#{historicalLng},
+			#{historicalLat},
+			#{lng},
+			#{lat},
+			#{historicalSpeed},
+			#{historicalDir},
+			#{gpsReceiveTime}
+		)
+	</insert>
+	
+</mapper>
+

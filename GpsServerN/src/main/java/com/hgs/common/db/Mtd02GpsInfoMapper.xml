@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.Mtd02GpsInfoMapper">
+	<resultMap id="rm" type="com.hgs.common.db.Mtd02GpsInfo">
+		<result property="pukId" jdbcType="INTEGER" column="puk_id"/>
+		<result property="k01UserId" jdbcType="VARCHAR" column="k01_user_id"/>
+		<result property="longitude" jdbcType="REAL" column="longitude"/>
+		<result property="latitude" jdbcType="REAL" column="latitude"/>
+		<result property="gpsArriveTime" jdbcType="VARCHAR" column="gps_arrive_time"/>
+		<result property="speed" jdbcType="VARCHAR" column="speed"/>
+		<result property="direction" jdbcType="VARCHAR" column="direction"/>
+		<result property="postionlogo" jdbcType="VARCHAR" column="postionlogo"/>
+		<result property="mileage" jdbcType="VARCHAR" column="mileage"/>
+		<result property="lastUpdatTime" jdbcType="VARCHAR" column="lastUpdateTime"/>
+	</resultMap>
+	
+	<!-- 更新 -->
+	<update id="updateSelective" parameterType="com.hgs.common.db.Mtd02GpsInfo">
+		UPDATE mtd02_gps_info 
+			<set>
+				<if test="k01UserId!=null">
+				k01_user_id = #{k01UserId},
+				</if>
+				<if test="longitude!=null">
+				longitude = #{longitude},
+				</if>
+				<if test="latitude!=null">
+				latitude = #{latitude},
+				</if>
+				<if test="gpsArriveTime!=null">
+				gps_arrive_time = #{gpsArriveTime},
+				</if>
+				<if test="speed!=null">
+				speed = #{speed},
+				</if>
+				<if test="direction!=null">
+				direction = #{direction},
+				</if>
+				<if test="postionlogo!=null">
+				postionlogo = #{postionlogo},
+				</if>
+				<if test="mileage!=null">
+				mileage = #{mileage},
+				</if>
+				<if test="lastUpdateTime!=null">
+				lastUpdateTime = #{lastUpdateTime},
+				</if>
+			</set>
+		WHERE 
+			k01_user_id = #{k01UserId}
+	</update>
+	
+</mapper>
+

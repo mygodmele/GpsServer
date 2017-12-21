@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.hgs.common.db.Mtd03GpsHistoryMapper">
+	<resultMap id="rm" type="com.hgs.common.db.Mtd03GpsHistory">
+		<result property="pukId" jdbcType="INTEGER" column="puk_id"/>
+		<result property="k01UserId" jdbcType="VARCHAR" column="k01_user_id"/>
+		<result property="latitude" jdbcType="CHAR" column="latitude"/>
+		<result property="longitude" jdbcType="CHAR" column="longitude"/>
+		<result property="gpsArriveTime" jdbcType="VARCHAR" column="gps_arrive_time"/>
+		<result property="speed" jdbcType="VARCHAR" column="speed"/>
+		<result property="direction" jdbcType="VARCHAR" column="direction"/>
+		<result property="postionlogo" jdbcType="VARCHAR" column="postionlogo"/>
+		<result property="error" jdbcType="VARCHAR" column="error"/>
+		<result property="powerstate" jdbcType="VARCHAR" column="powerstate"/>
+		<result property="protocollogo" jdbcType="VARCHAR" column="protocollogo"/>
+		<result property="mileage" jdbcType="VARCHAR" column="mileage"/>
+		<result property="acc" jdbcType="CHAR" column="acc"/>
+		<result property="st1d6" jdbcType="CHAR" column="st1d6"/>
+		<result property="st1d5" jdbcType="CHAR" column="st1d5"/>
+		<result property="st1d4" jdbcType="CHAR" column="st1d4"/>
+		<result property="st1d3" jdbcType="CHAR" column="st1d3"/>
+		<result property="st1d2" jdbcType="CHAR" column="st1d2"/>
+		<result property="st1d1" jdbcType="CHAR" column="st1d1"/>
+		<result property="st1d0" jdbcType="CHAR" column="st1d0"/>
+		<result property="st2d7" jdbcType="CHAR" column="st2d7"/>
+		<result property="st2d6" jdbcType="CHAR" column="st2d6"/>
+		<result property="st2d5" jdbcType="CHAR" column="st2d5"/>
+		<result property="st2d4" jdbcType="CHAR" column="st2d4"/>
+		<result property="st2d3" jdbcType="CHAR" column="st2d3"/>
+		<result property="st2d2" jdbcType="CHAR" column="st2d2"/>
+		<result property="st2d1" jdbcType="CHAR" column="st2d1"/>
+		<result property="st2d0" jdbcType="CHAR" column="st2d0"/>
+		<result property="st3d7" jdbcType="CHAR" column="st3d7"/>
+		<result property="st3d6" jdbcType="CHAR" column="st3d6"/>
+		<result property="st3d5" jdbcType="CHAR" column="st3d5"/>
+		<result property="csq" jdbcType="VARCHAR" column="csq"/>
+		<result property="st4d7" jdbcType="CHAR" column="st4d7"/>
+		<result property="st4d6" jdbcType="CHAR" column="st4d6"/>
+		<result property="st4d5" jdbcType="CHAR" column="st4d5"/>
+		<result property="st4d4" jdbcType="CHAR" column="st4d4"/>
+		<result property="st4d3" jdbcType="CHAR" column="st4d3"/>
+		<result property="st4d2" jdbcType="CHAR" column="st4d2"/>
+		<result property="st4d1" jdbcType="CHAR" column="st4d1"/>
+		<result property="st4d0" jdbcType="CHAR" column="st4d0"/>
+		<result property="sendtime" jdbcType="VARCHAR" column="sendtime"/>
+		<result property="stoptime" jdbcType="VARCHAR" column="stoptime"/>
+		<result property="overspeedtime" jdbcType="DOUBLE" column="overspeedtime"/>
+		<result property="fence" jdbcType="VARCHAR" column="fence"/>
+		<result property="v6" jdbcType="VARCHAR" column="v6"/>
+		<result property="v7" jdbcType="VARCHAR" column="v7"/>
+		<result property="v8" jdbcType="VARCHAR" column="v8"/>
+		<result property="fbBak1" jdbcType="VARCHAR" column="FB_BAK1"/>
+		<result property="fbBak2" jdbcType="VARCHAR" column="FB_BAK2"/>
+		<result property="fbBak3" jdbcType="VARCHAR" column="FB_BAK3"/>
+		<result property="fbBak4" jdbcType="VARCHAR" column="FB_BAK4"/>
+		<result property="fbBak5" jdbcType="VARCHAR" column="FB_BAK5"/>
+		<result property="ebExt1" jdbcType="VARCHAR" column="EB_EXT1"/>
+		<result property="ebExt2" jdbcType="VARCHAR" column="EB_EXT2"/>
+		<result property="ebExt3" jdbcType="VARCHAR" column="EB_EXT3"/>
+		<result property="ebExt4" jdbcType="VARCHAR" column="EB_EXT4"/>
+		<result property="ebExt5" jdbcType="VARCHAR" column="EB_EXT5"/>
+		<result property="dddDelFlag" jdbcType="CHAR" column="DDD_DEL_FLAG"/>
+		<result property="cc1CreatTime" jdbcType="VARCHAR" column="CC1_CREAT_TIME"/>
+		<result property="cc2CreatUser" jdbcType="VARCHAR" column="CC2_CREAT_USER"/>
+		<result property="uu1UpdateTime" jdbcType="VARCHAR" column="UU1_UPDATE_TIME"/>
+		<result property="uu2UpdateUser" jdbcType="VARCHAR" column="UU2_UPDATE_USER"/>
+	</resultMap>
+	 <!-- 插入 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="pukId" parameterType="com.hgs.common.db.Mtd03GpsHistory">
+		INSERT INTO mtd03_gps_history (
+			puk_id,
+			k01_user_id,
+			latitude,
+			longitude,
+			gps_arrive_time,
+			speed,
+			direction,
+			postionlogo,
+			error,
+			powerstate,
+			protocollogo,
+			mileage,
+			acc,
+			st1d6,
+			st1d5,
+			st1d4,
+			st1d3,
+			st1d2,
+			st1d1,
+			st1d0,
+			st2d7,
+			st2d6,
+			st2d5,
+			st2d4,
+			st2d3,
+			st2d2,
+			st2d1,
+			st2d0,
+			st3d7,
+			st3d6,
+			st3d5,
+			csq,
+			st4d7,
+			st4d6,
+			st4d5,
+			st4d4,
+			st4d3,
+			st4d2,
+			st4d1,
+			st4d0,
+			sendtime,
+			stoptime,
+			overspeedtime,
+			fence,
+			v6,
+			v7,
+			v8,
+			FB_BAK1,
+			FB_BAK2,
+			FB_BAK3,
+			FB_BAK4,
+			FB_BAK5,
+			EB_EXT1,
+			EB_EXT2,
+			EB_EXT3,
+			EB_EXT4,
+			EB_EXT5,
+			DDD_DEL_FLAG,
+			CC1_CREAT_TIME,
+			CC2_CREAT_USER,
+			UU1_UPDATE_TIME,
+			UU2_UPDATE_USER
+		) VALUES (
+			#{pukId},
+			#{k01UserId},
+			#{latitude},
+			#{longitude},
+			#{gpsArriveTime},
+			#{speed},
+			#{direction},
+			#{postionlogo},
+			#{error},
+			#{powerstate},
+			#{protocollogo},
+			#{mileage},
+			#{acc},
+			#{st1d6},
+			#{st1d5},
+			#{st1d4},
+			#{st1d3},
+			#{st1d2},
+			#{st1d1},
+			#{st1d0},
+			#{st2d7},
+			#{st2d6},
+			#{st2d5},
+			#{st2d4},
+			#{st2d3},
+			#{st2d2},
+			#{st2d1},
+			#{st2d0},
+			#{st3d7},
+			#{st3d6},
+			#{st3d5},
+			#{csq},
+			#{st4d7},
+			#{st4d6},
+			#{st4d5},
+			#{st4d4},
+			#{st4d3},
+			#{st4d2},
+			#{st4d1},
+			#{st4d0},
+			#{sendtime},
+			#{stoptime},
+			#{overspeedtime},
+			#{fence},
+			#{v6},
+			#{v7},
+			#{v8},
+			#{fbBak1},
+			#{fbBak2},
+			#{fbBak3},
+			#{fbBak4},
+			#{fbBak5},
+			#{ebExt1},
+			#{ebExt2},
+			#{ebExt3},
+			#{ebExt4},
+			#{ebExt5},
+			#{dddDelFlag},
+			#{cc1CreatTime},
+			#{cc2CreatUser},
+			#{uu1UpdateTime},
+			#{uu2UpdateUser}
+		)
+	</insert>
+	
+</mapper>
+
